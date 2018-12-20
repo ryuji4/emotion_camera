@@ -10,6 +10,7 @@ import io,sys
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 
 now_picture = str(datetime.datetime.now()) + ".jpg"
+
 with picamera.PiCamera() as camera:
     camera.resolution = (1024, 768)
     camera.vflip = True
@@ -50,10 +51,10 @@ count = False
 face_data = {"通常":0,"笑顔":0,"困惑":0,"驚き":0}
 
 if faces != []:
-    face_data["通常"] = round(faces[0]["faceAttributes"]["emotion"]["neutral"],1) * 100
-    face_data["笑顔"] = round(faces[0]["faceAttributes"]["smile"],1) * 100
-    face_data["困惑"] = round(faces[0]["faceAttributes"]["emotion"]["sadness"],1) * 100
-    face_data["驚き"] = round(faces[0]["faceAttributes"]["emotion"]["surprise"],1) * 100
+    face_data["通常"] = round(faces[0]["faceAttributes"]["emotion"]["neutral"],3) * 100
+    face_data["笑顔"] = round(faces[0]["faceAttributes"]["smile"],3) * 100
+    face_data["困惑"] = round(faces[0]["faceAttributes"]["emotion"]["sadness"],3) * 100
+    face_data["驚き"] = round(faces[0]["faceAttributes"]["emotion"]["surprise"],3) * 100
 
     print("あなたの表情は、<br>")
     for f in face_data:
