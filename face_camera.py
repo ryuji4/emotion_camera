@@ -32,7 +32,7 @@ with picamera.PiCamera() as camera:
     print("1<br>")
     time.sleep(2)
     camera.capture("/home/pi/img/" + now_picture)
-    print("<img src='/home/pi/img/" + now_picture + "' ><br>")
+    print("<p><img src='/home/pi/img/" + now_picture + "' ></p><br>")
     print("撮影が完了しました。<br>")
     time.sleep(5)
 
@@ -68,5 +68,11 @@ else:
 
 print("画像処理が終了しました。<br>")
 
+print("<form action='/face.html' methhod='POST'>")
+print("<input type='submit' name='control' value='戻る'>")
+print("</form>")
+print("<form action='/cgi-bin/face_camera.py' method='POST'>")
+print("<input type='submit' name='control' value='再撮影'><br>")
+print("</form>")
 print("</body>")
 print("</html>")
